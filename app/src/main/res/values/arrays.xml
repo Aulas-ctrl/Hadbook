@@ -15,4 +15,31 @@
     <item>Рис</item>
      </string-array>
 
+  <string-array name="sna_array">
+    <item>Грузила</item>
+    <item>Крючки</item>
+    <item>Леска</item>
+    <item>Блесна</item>
+     </string-array>
+
+  <string-array name="pri_array">
+  <item>Кукуруза</item>
+  <item>Хлеб</item>
+  <item>Рис</item>
+  </string-array>
+
+  <string-array name="history_array">
+  <item>Рыбак и море</item>
+  <item>рыбак и щука</item>
+  <item>На донку</item>
+    <item>Случай на рыбалке</item>
+  </string-array>
+
+  <string-array name="advice_array">
+  <item>Советы по прикормке</item>
+  <item>Сезон рыбалки</item>
+  <item>На что клюет</item>
+  <item>Большой улов</item>
+</string-array>
+
 </resources>

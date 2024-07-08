@@ -1,29 +1,30 @@
 package com.example.handbook;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toolbar;
-
-
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.handbook.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ListView list;
     private String [] array;
+
+    private Toolbar toolbar;
+
+
+
     private ArrayAdapter <String> adapter;
-    public Toolbar toolbar;
 
     private ActivityMainBinding binding;
 
@@ -31,13 +32,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         list = findViewById(R.id.listView);
         array = getResources().getStringArray(R.array.fish_array);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, array);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, array);
         list.setAdapter(adapter);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//        DrawerLayout drawer = binding.drawerLayout;
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
 
 
@@ -45,13 +52,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(binding.getRoot());
 
 
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
 
     }
 
@@ -65,12 +69,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
-        int id = menuitem.getItemId();
-        if (id == R.id.nav_home){
 
-        } else if (id == R.id.nav_gallery) {
+        int id = menuitem.getItemId();
+
+        if (id == R.id.id_fish) {
+
+           array = getResources().getStringArray(R.array.fish_array);
+           adapter.clear();
+           adapter.addAll(array);
+           adapter.notifyDataSetChanged();
+
+        } else if
+        (id == R.id.id_na) {
+           array = getResources().getStringArray(R.array.na_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+
+        } else if (id == R.id.id_sna) {
+            array = getResources().getStringArray(R.array.sna_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+
+        } else if (id == R.id.id_pri) {
+            array = getResources().getStringArray(R.array.pri_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+
+        } else if (id == R.id.id_history) {
+            array = getResources().getStringArray(R.array.history_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+
+        } else if (id == R.id.id_advice) {
+            array = getResources().getStringArray(R.array.advice_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
 
         }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
 
         return true;
     }
