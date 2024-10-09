@@ -7,30 +7,30 @@
         <item
             android:id="@+id/id_fish"
             android:icon="@mipmap/ic_list"
-            android:title="@string/menu_home" />
+            android:title="@string/fish" />
         <item
             android:id="@+id/id_na"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="@string/na" />
         <item
             android:id="@+id/id_sna"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/sna" />
         <item
             android:id="@+id/id_pri"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_share" />
+            android:title="@string/pri" />
          </group>
     <item android:title="Разное">
         <menu>
             <item
                 android:id="@+id/id_history"
                 android:icon="@drawable/ic_menu_gallery"
-                android:title="@string/menu_share" />
+                android:title="@string/history" />
             <item
                 android:id="@+id/id_advice"
                 android:icon="@drawable/ic_menu_gallery"
-                android:title="@string/menu_send" />
+                android:title="@string/advice" />
 
 
         </menu>
