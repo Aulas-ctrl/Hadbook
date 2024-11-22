@@ -76,7 +76,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 Intent intent = new Intent(MainActivity.this, Text_Content_Activity.class);
                 startActivity(intent);
-                intent.putExtra()
+                intent.putExtra("category", category_index);
+                intent.putExtra("position", position);
+
 
             }
         });
