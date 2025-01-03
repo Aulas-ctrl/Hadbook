@@ -16,7 +16,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.handbook.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private ArrayAdapter <String> adapter;
 
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
- //        DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = findViewById(R.id.nav_view);
-
-
-
-//        binding = ActivityMainBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -72,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 Intent intent = new Intent(MainActivity.this, Text_Content_Activity.class);
                 startActivity(intent);
@@ -106,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
            adapter.addAll(array);
            adapter.notifyDataSetChanged();
            toolbar.setTitle(R.string.fish);
-            category_index = 0;
+           category_index = 0;
 
         } else if
         (id == R.id.id_na) {
