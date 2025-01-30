@@ -40,6 +40,15 @@
   <item>Сезон рыбалки</item>
   <item>На что клюет</item>
   <item>Большой улов</item>
+
+
+</string-array>  <string-array name="main_text_size_array">
+  <item>Большой</item>
+  <item>Средний</item>
+  <item>Маленький</item>
 </string-array>
+
+
+
 
 </resources>

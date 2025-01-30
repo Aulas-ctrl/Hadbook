@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Handbook"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Logo_Activity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Handbook.NoActionBar">
@@ -24,6 +24,10 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.handbook.Text_Content_Activity" />
+        <activity android:name="com.example.handbook.MainActivity"
+            android:theme="@style/Theme.Handbook.NoActionBar"
+              />
+        <activity android:name="settings.SettingsActivity" />
     </application>
 
 </manifest>

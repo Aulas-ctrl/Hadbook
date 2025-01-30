@@ -21,6 +21,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import settings.SettingsActivity;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ListView list;
@@ -28,8 +30,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private Toolbar toolbar;
     private int category_index;
-
-
 
     private ArrayAdapter <String> adapter;
 
@@ -50,9 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -61,15 +58,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener (new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 Intent intent = new Intent(MainActivity.this, Text_Content_Activity.class);
-                startActivity(intent);
                 intent.putExtra("category", category_index);
                 intent.putExtra("position", position);
-
+                startActivity(intent);
 
             }
         });
@@ -84,6 +80,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    public boolean onOptionsItemSelected (@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings){
+            Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
@@ -91,54 +97,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuitem.getItemId();
 
         if (id == R.id.id_fish) {
-
-           array = getResources().getStringArray(R.array.fish_array);
-           adapter.clear();
-           adapter.addAll(array);
-           adapter.notifyDataSetChanged();
-           toolbar.setTitle(R.string.fish);
-           category_index = 0;
+            fillArray(R.array.fish_array, R.string.fish, 0);
 
         } else if
         (id == R.id.id_na) {
-           array = getResources().getStringArray(R.array.na_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            toolbar.setTitle(R.string.na);
-            category_index = 1;
+            fillArray(R.array.na_array, R.string.na, 1);
+
 
         } else if (id == R.id.id_sna) {
-            array = getResources().getStringArray(R.array.sna_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            toolbar.setTitle(R.string.sna);
-            category_index = 2;
+
+            fillArray(R.array.sna_array, R.string.sna, 2);
+
 
         } else if (id == R.id.id_pri) {
-            array = getResources().getStringArray(R.array.pri_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            toolbar.setTitle(R.string.pri);
-            category_index = 3;
+            fillArray(R.array.pri_array, R.string.pri, 3);
+
 
         } else if (id == R.id.id_history) {
-            array = getResources().getStringArray(R.array.history_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            toolbar.setTitle(R.string.history);
-            category_index = 4;
+            fillArray(R.array.history_array, R.string.history, 4);
+
 
         } else if (id == R.id.id_advice) {
-            array = getResources().getStringArray(R.array.advice_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            toolbar.setTitle(R.string.advice);
-            category_index = 5;
+            fillArray(R.array.advice_array, R.string.advice, 5);
 
         }
 
@@ -147,4 +127,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
     }
+
+    private void fillArray (int title,int arrayList, int index) {
+        array = getResources().getStringArray(title);
+        adapter.clear();
+        adapter.addAll(array);
+        adapter.notifyDataSetChanged();
+        toolbar.setTitle(arrayList);
+        category_index = index;
+
+    }
+
+
 }

@@ -1,32 +1,37 @@
 package com.example.handbook;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Text_Content_Activity extends AppCompatActivity {
+
+    private ActionBar actionBar;
     private TextView text_content;
+    private Typeface face1;
     private ImageView iContent;
     private int category = 0;
     private int position = 0;
-    private int [] array_fish = {R.string.fish1, R.string.fish2,R.string.fish3,R.string.fish4,R.string.fish5};
+    private int [] array_fish = {R.string.fish_karp, R.string.fish_s4uka,R.string.fish_som,R.string.fish_osetr,R.string.fish_nalim};
     private int [] array_na = {R.string.na1, R.string.na2,R.string.na3,R.string.na4};
-    private int [] array_image_fish = {R.drawable.som, R.drawable.s4uka, R.drawable.karp, R.drawable.osetr, R.drawable.nalim};
+    private int [] array_image_fish = {R.drawable.karp, R.drawable.s4uka, R.drawable.som, R.drawable.osetr, R.drawable.nalim};
+    private String [] array_title_fish = {"Карп", "Щука", "Сом", "Осетр", "Налим"};
 
     protected void onCreate (Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.text_content);
-        text_content = findViewById(R.id.text_main_content);
 
-        iContent = findViewById(R.id.imageContent);
-        recieveIntent();
+        init();
+        reciveIntent();
 
     }
-    private void recieveIntent()
+    private void reciveIntent()
     {
         Intent i =getIntent();
         if (i!=null)
@@ -39,6 +44,8 @@ public class Text_Content_Activity extends AppCompatActivity {
             case 0:
                 text_content.setText(array_fish[position]);
                 iContent.setImageResource(array_image_fish[position]);
+                actionBar.setTitle(array_title_fish[position]);
+
                 break;
             case 1:
                 text_content.setText(array_na[position]);
@@ -60,6 +67,16 @@ public class Text_Content_Activity extends AppCompatActivity {
         }
 
     }
+private void init () {
+
+    text_content = findViewById(R.id.text_main_content);
+    actionBar = getSupportActionBar();
+    iContent = findViewById(R.id.imageContent);
+    face1 = Typeface.createFromAsset(this.getAssets(), "fonts/Lobster-Regular.ttf");
+    text_content.setTypeface(face1);
+
+
+}
 
 
 }
