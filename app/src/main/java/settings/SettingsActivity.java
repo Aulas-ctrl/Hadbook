@@ -1,7 +1,6 @@
 package settings;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
@@ -15,17 +14,18 @@ public class SettingsActivity extends AppCompatActivity {
     private ActionBar actionBar;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         if(getSupportActionBar() != null){
             actionBar = getSupportActionBar();
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setTitle(R.string.action_settings);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle(getString(R.string.action_settings));
         }
         getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
     }
     public boolean onOptionsItemSelected (MenuItem item){
-        if (item.getItemId()==android.R.id.home){
+        if (item.getItemId() == android.R.id.home){
             finish();
         }
         return (true);

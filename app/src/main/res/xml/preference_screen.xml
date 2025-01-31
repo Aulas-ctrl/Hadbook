@@ -8,6 +8,6 @@
         android:defaultValue="Средний"
         android:entries="@array/main_text_size_array"
         android:entryValues="@array/main_text_size_array"
-        android:key="list_preference_1"
+        android:key="main_text_size"
         android:title="@string/main_text_size" />
 </PreferenceScreen>
