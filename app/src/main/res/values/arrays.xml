@@ -8,6 +8,15 @@
   <item>Налим</item>
   </string-array>
 
+
+  <string-array name="fish_array_2">
+  <item>Karpius</item>
+  <item>Schhukius</item>
+  <item>Somus</item>
+  <item>Osetrusр</item>
+  <item>Nalimus</item>
+  </string-array>
+
   <string-array name="na_array">
     <item>Червяк</item>
     <item>Кукуруза</item>

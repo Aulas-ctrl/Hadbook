@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -19,19 +18,28 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import settings.SettingsActivity;
+import utils.CustomArrayAdapter;
+import utils.ListItemClass;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ListView list;
-    private String [] array;
+    private String [] array, arraySecName;
+//    private ArrayAdapter <String> adapter;
+    private CustomArrayAdapter adapter;
 
     private Toolbar toolbar;
     private int category_index;
 
-    private ArrayAdapter <String> adapter;
+    private int [] array_fish_color = new int[] {R.color.green, R.color.yellow,R.color.green,R.color.red,R.color.red };
+    private List<ListItemClass> listItemMain;
+
+    private ListItemClass listItem;
+
+
 
 
     @Override
@@ -41,10 +49,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         list = findViewById(R.id.listView);
         array = getResources().getStringArray(R.array.fish_array);
+        arraySecName = getResources().getStringArray(R.array.fish_array_2);
+        listItemMain = new ArrayList<>();
+
+        for (int i = 0; i< array.length; i++ )
+        {
+          listItem = new ListItemClass();
+          listItem.setNameF(array[i]);
+          listItem.setSecond_name(arraySecName[i]);
+          listItem.setImage_id(array_fish_color[i]);
+
+           listItemMain.add(listItem);
+        }
+
+        adapter = new CustomArrayAdapter(this, R.layout.list_view_item_1, listItemMain, getLayoutInflater());
 
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<String>(Arrays.asList(array)));
-        list.setAdapter(adapter);
+
+
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<String>(Arrays.asList(array)));
+//        list.setAdapter(adapter);
+
+
 
 
         toolbar = findViewById(R.id.toolbar);
@@ -97,6 +123,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuitem.getItemId();
 
         if (id == R.id.id_fish) {
+
+            array = getResources().getStringArray(R.array.fish_array);
+            arraySecName = getResources().getStringArray(R.array.fish_array_2);
+            listItemMain = new ArrayList<>();
+
+            for (int i = 0; i< array.length; i++ )
+            {
+                listItem = new ListItemClass();
+                listItem.setNameF(array[i]);
+                listItem.setSecond_name(arraySecName[i]);
+                listItem.setImage_id(array_fish_color[i]);
+
+                listItemMain.add(listItem);
+            }
+
             fillArray(R.array.fish_array, R.string.fish, 0);
 
         } else if
@@ -129,9 +170,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void fillArray (int title,int arrayList, int index) {
-        array = getResources().getStringArray(title);
-        adapter.clear();
-        adapter.addAll(array);
+//        array = getResources().getStringArray(title);
+//        adapter.clear();
+//        adapter.addAll(array);
         adapter.notifyDataSetChanged();
         toolbar.setTitle(arrayList);
         category_index = index;
